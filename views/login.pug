@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .login.m-5.text-center
+    .row.justify-content-center
+      .col-3
+
+      .login-box.box.col-6.p-4.aglin-items-center
+        h1.fw-4.mt-3= title
+        
+        .login-form.p-3
+          form(action="/login" method="POST")
+            .form-group.row.mb-3
+              label.col-3.text-start.col-form-label(for="email") Email 
+              .col-8
+                input#email.form-control(type="text" name="email" required)
+
+            .form-group.row.mb-3
+              label.col-3.text-start.col-form-label(for="password") Password
+              .col-8
+                input#password.form-control(type="password" name="password" required)
+
+            .form-group.row.my-5
+              .col-12
+                button.btn.custom-btn.col-12(type="submit") LOGIN
+
+            .form-group.row.mb-3
+              .col-12
+                p Don't have an account? 
+                  a(href='registration') Register
+
+      .col-3
+
+

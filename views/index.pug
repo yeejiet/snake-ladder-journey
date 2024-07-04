@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+
+  .row.m-4
+    .col-3.text-center.p-4
+      h2.justify-content-start Username
+      h4 Score: 
+      p= users.score
+      button.btn.custom-btn.col-12(type="submit") LOGOUT
+      
+    .col-9.box.p-4
+      each user in users 
+        p Question:
+        p= user.username
+
