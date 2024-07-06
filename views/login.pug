@@ -4,21 +4,20 @@ block content
   .login.m-5.text-center
     .row.justify-content-center
       .col-3
-
-      .login-box.box.col-6.p-4.aglin-items-center
+      .login-box.box.col-6.p-4.align-items-center
         h1.fw-4.mt-3= title
         
         .login-form.p-3
           form(action="/login" method="POST")
             .form-group.row.mb-3
-              label.col-3.text-start.col-form-label(for="email") Email 
-              .col-8
-                input#email.form-control(type="text" name="email" required)
+              label.col-12.text-start.col-form-label(for="email") Email 
+              .col-12
+                input#email.form-control(type="text" name="email" placeholder="email" required)
 
             .form-group.row.mb-3
-              label.col-3.text-start.col-form-label(for="password") Password
-              .col-8
-                input#password.form-control(type="password" name="password" required)
+              label.col-12.text-start.col-form-label(for="password") Password
+              .col-12
+                input#password.form-control(type="password" name="password" placeholder="password" required)
 
             .form-group.row.my-5
               .col-12
@@ -30,5 +29,3 @@ block content
                   a(href='registration') Register
 
       .col-3
-
-
