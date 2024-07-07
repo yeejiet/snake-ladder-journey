@@ -48,7 +48,7 @@ db.connect((err) => {
 const indexRouters = require('./routes/index')(db);
 app.use('/', indexRouters)
 
-const addRouters = require('./routes/add')(db);
+const addRouters = require('./routes/registration')(db);
 app.use('/', addRouters);
 
 /* GET login page. */
