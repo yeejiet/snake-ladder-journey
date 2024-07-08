@@ -61,6 +61,11 @@ app.get('/registration', (req, res) => {
   res.render('registration', { title: 'REGISTRATION' });
 });
 
+// Get handbook page
+app.get('/handbook', (req, res) => {
+  res.render('handbook', { title: 'USER MANUAL BOOK' });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

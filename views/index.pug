@@ -1,17 +1,19 @@
 extends layout
 
 block content
-  h1= title
+  .row.mx-2
+    h1.col-11= title
+    a.col-1(href="/handbook")
+      img(src="/images/handbook.png", alt="User Manual", width="75px")
 
   .row.m-4
     .col-3.text-center.p-4
       h2.justify-content-start Username
       h4 Score: 
       p= users.score
-      button.btn.custom-btn.col-12(type="submit") LOGOUT
+      a.btn.custom-btn.col-12(href="#") LOGOUT
       
     .col-9.box.p-4
-      each user in users 
-        p Question:
-        p= user.username
-
+        b Question:
+        | users.username
+        
