@@ -7,7 +7,7 @@ module.exports = (db) => {
         const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
         db.query(query, [username, email, password], (err, results) => {
             if (err) throw err;
-            res.redirect('/login');
+            res.redirect('/handbook');
         });
     });
     return router;
