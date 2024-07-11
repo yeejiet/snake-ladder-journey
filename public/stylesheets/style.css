@@ -9,12 +9,12 @@ body {
   font-weight: normal;
 }
 
-h1 {
-  font-size: 50px;
+h2, h3, h4, h5 {
   font-weight: bold;
 }
 
-h2, h3, h4, h5 {
+h1 {
+  font-size: 55px;
   font-weight: bold;
 }
 
@@ -42,12 +42,17 @@ a:hover {
   background-color: #64868e;
   border: 2px #64868e solid;
   color: #d1e4d1;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .custom-btn:hover {
   background-color: #d1e4d1;
   border: 2px #64868e solid;
   color: #64868e;
-  font-weight: bolder;
+  font-weight: bold;
+}
+
+.err-msg {
+  font-size: 15px;
+  font-style: italic;
 }

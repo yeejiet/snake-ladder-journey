@@ -1,39 +1,59 @@
-extends layout
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
 
-block content
-  .registration.m-5.text-center
-    .row.justify-content-center
-      .col-3 
+    title= title
+    //- Bootstrap CSS
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    //- jQuery
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    //- Custom CSS
+    link(href="/stylesheets/style.css", rel="stylesheet")
 
-      .registration-box.box.col-6.border.border-5.p-4.aglin-items-center
-        h1.fw-4.mt-5= title
-        
-        .registration-form.p-3
-          form(action="/register" method="POST")
-            .form-group.row.mb-3
-              label.col-12.text-start.col-form-label(for="username") Username 
-              .col-12
-                input#username.form-control(type="text" name="username" placeholder="username" required)
+  body 
+    .registration.m-5
+      .row.justify-content-center
+        .col-3 
 
-            .form-group.row.mb-3
-              label.col-12.text-start.col-form-label(for="email") Email 
-              .col-12
-                input#email.form-control(type="text" name="email" placeholder="email" required)
-            
-            .form-group.row.mb-3
-              label.col-12.text-start.col-form-label(for="password") Password
-              .col-12
-                input#password.form-control(type="password" name="password" placeholder="password" required)
+        .registration-box.box.col-6.border.border-5.p-4.aglin-items-center
+          h1.fw-4.mt-5.text-center= title
+          
+          #registration-form.p-3
+            form(action="/register" method="POST")
+              .form-group.row.mb-3
+                label.col-12.text-start.col-form-label(for="username") Username: 
+                .col-12
+                  input#username.form-control(type="text" name="username" placeholder="username" required)
+                  p#username-error.mt-2.err-msg
 
-            .form-group.row.my-5
-              .col-12
-                button.btn.custom-btn.col-5.m-1(type="submit") REGISTER
-                button.btn.custom-btn.col-5.m-1(type="reset") RESET
+              .form-group.row.mb-3
+                label.col-12.text-start.col-form-label(for="email") Email: 
+                .col-12
+                  input#email.form-control(type="text" name="email" placeholder="email" required)
+                  p#email-error.mt-2.err-msg
+              
+              .form-group.row.mb-3
+                label.col-12.text-start.col-form-label(for="password") Password:
+                .col-12
+                  input#password.form-control(type="password" name="password" placeholder="password" required)
 
-            .form-group.row.mb-3
-              .col-12
-                p Already have an account? 
-                  a(href='login') Login
-      .col-3
+              .form-group.row.my-5.text-center
+                .col-6
+                  button#register-button.btn.custom-btn.col-12.m-1(type="submit") REGISTER
+                .col-6
+                  button.btn.custom-btn.col-12.m-1(type="reset") RESET
 
+              .form-group.row.mb-3.text-center
+                .col-12
+                  p Already have an account? 
+                    a(href='login') Login
+        .col-3
 
+    //- checkEmail.js
+    script(src='/javascripts/checkEmail.js')
+    script(src='/javascripts/checkUsername.js')
+    //- Bootstrap JS and dependencies
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")

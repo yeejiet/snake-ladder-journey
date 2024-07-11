@@ -51,14 +51,31 @@ app.use('/', indexRouters)
 const addRouters = require('./routes/registration')(db);
 app.use('/', addRouters);
 
+const checkEmailRoutes = require('./routes/email')(db);
+app.use('/', checkEmailRoutes)
+
+const checkUsernameRoutes = require('./routes/username')(db);
+app.use('/', checkUsernameRoutes);
+
+app.use(function(req, res, next) {
+  req.db = db;
+  next();
+})
+
+const registrationRoutes = require('./routes/registration');
+app.use('/registration', registrationRoutes);
+
+var checkEmailRoute = require('./routes/email')(db);
+app.use('/', checkEmailRoute);
+
+app.use(function(req, res, next) {
+  req.db = db;
+  next();
+});
+
 /* GET login page. */
 app.get('/login', (req, res) => {
   res.render('login', { title: 'LOGIN' });
-});
-
-/* GET registration page. */
-app.get('/registration', (req, res) => {
-  res.render('registration', { title: 'REGISTRATION' });
 });
 
 // Get handbook page
