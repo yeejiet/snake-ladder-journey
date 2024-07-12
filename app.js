@@ -21,15 +21,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 
-// get index page
-// const indexRouter = require('./routes/index')(db);
-// app.use('/', indexRouter);
-
-
 const bodyParser = require('body-parser');
 
 const mysql = require('mysql2');
-
 const db = mysql.createConnection ({
   host: 'localhost',
   user: 'root',
@@ -57,21 +51,16 @@ app.use('/', checkEmailRoutes)
 const checkUsernameRoutes = require('./routes/username')(db);
 app.use('/', checkUsernameRoutes);
 
+const registrationRoutes = require('./routes/registration');
+app.use('/registration', registrationRoutes);
+
+const questionsRoutes = require('./routes/questions')(db);
+app.use('/', questionsRoutes);
+
 app.use(function(req, res, next) {
   req.db = db;
   next();
 })
-
-const registrationRoutes = require('./routes/registration');
-app.use('/registration', registrationRoutes);
-
-var checkEmailRoute = require('./routes/email')(db);
-app.use('/', checkEmailRoute);
-
-app.use(function(req, res, next) {
-  req.db = db;
-  next();
-});
 
 /* GET login page. */
 app.get('/login', (req, res) => {
