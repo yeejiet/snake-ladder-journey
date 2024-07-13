@@ -30,6 +30,9 @@ block content
               label.col-12.text-start.col-form-label(for="password") Password:
               .col-12.input-group
                 input#password.form-control(type="password" name="password" placeholder="password" required class=(field === 'password' ? 'is-invalid' : ''))
+                .input-group-append
+                  span#togglePassword(class="input-group-text") 
+                    i(class="fa fa-eye")
                 p#password-error.mt-2.err-msg
 
             .form-group.row.my-5.text-center
