@@ -5,27 +5,32 @@ block content
     .row.justify-content-center
       .col-3 
 
-      .registration-box.box.col-6.border.border-5.p-4.aglin-items-center
+      .registration-box.box.col-6.border.border-5.p-4.align-items-center
         h1.fw-4.mt-5.text-center= title
         
+        if errorMessage
+          .alert.alert-danger(role="alert")
+            = errorMessage
+
         #registration-form.p-3
           form(action="/register" method="POST")
             .form-group.row.mb-3
               label.col-12.text-start.col-form-label(for="username") Username: 
               .col-12
-                input#username.form-control(type="text" name="username" placeholder="username" required)
+                input#username.form-control(type="text" name="username" placeholder="username" required class=(field === 'username' ? 'is-invalid' : ''))
                 p#username-error.mt-2.err-msg
 
             .form-group.row.mb-3
               label.col-12.text-start.col-form-label(for="email") Email: 
               .col-12
-                input#email.form-control(type="text" name="email" placeholder="email" required)
+                input#email.form-control(type="text" name="email" placeholder="email" required class=(field === 'email' ? 'is-invalid' : ''))
                 p#email-error.mt-2.err-msg
             
             .form-group.row.mb-3
               label.col-12.text-start.col-form-label(for="password") Password:
-              .col-12
-                input#password.form-control(type="password" name="password" placeholder="password" required)
+              .col-12.input-group
+                input#password.form-control(type="password" name="password" placeholder="password" required class=(field === 'password' ? 'is-invalid' : ''))
+                p#password-error.mt-2.err-msg
 
             .form-group.row.my-5.text-center
               .col-6
