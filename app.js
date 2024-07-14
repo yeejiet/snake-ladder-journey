@@ -39,17 +39,33 @@ db.connect((err) => {
   }
 });
 
-const indexRouters = require('./routes/index')(db);
+const session = require('express-session');
+
+// Session config
+app.use(session({
+  secret: 'snake_ladder_journey',
+  resave: true,
+  saveUninitialized: true
+}));
+
+//  checks if a user is logged in by checking the loggedin property of the session object
+function checkLoggedIn(req, res, next) {
+  if (req.session.loggedin) { 
+    next(); 
+  } else { 
+    req.session.error = 'Please Login!'; 
+    res.redirect('/login'); 
+  } 
+}  
+
+const loginRoutes = require('./routes/login')(db);
+app.use('/', loginRoutes)
+
+const indexRouters = require('./routes/index')(db, checkLoggedIn);
 app.use('/', indexRouters)
 
 const addRouters = require('./routes/registration')(db);
 app.use('/', addRouters);
-
-const checkEmailRoutes = require('./routes/email')(db);
-app.use('/', checkEmailRoutes)
-
-const checkUsernameRoutes = require('./routes/username')(db);
-app.use('/', checkUsernameRoutes);
 
 const registrationRoutes = require('./routes/registration');
 app.use('/registration', registrationRoutes);
