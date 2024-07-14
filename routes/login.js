@@ -22,7 +22,7 @@ module.exports = (db) => {
                     req.session.email = email;
                     req.session.id = results[0].id;
                     req.session.username = results[0].username;
-                    res.redirect('/handbook');
+                    res.redirect('/');
                    
                 } else {
                     req.session.emailError = 'Incorrect Email and Password!';

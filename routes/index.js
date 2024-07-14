@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, checkLoggedIn) => {
   // Define the route for GET /
-  router.get('/', (req, res) => {
+  router.get('/', checkLoggedIn, (req, res) => {
     const query = "SELECT * FROM users";
 
     // Execute the query

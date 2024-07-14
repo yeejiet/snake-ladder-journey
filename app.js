@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -47,6 +46,12 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+// Middleware to set cache control headers
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store');
+  next();
+})
 
 //  checks if a user is logged in by checking the loggedin property of the session object
 function checkLoggedIn(req, res, next) {
