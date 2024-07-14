@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  .login.m-5
+  .login.m-sm-5
     .row.justify-content-center
-      .col-3
+      .col-sm-3
 
-      .login-box.box.col-6.p-4.align-items-center
+      .login-box.box.col-sm-6.p-3.p-sm-4.align-items-center
         h1.fw-4.mt-3.text-center= title
         
         .login-form.p-3
@@ -23,15 +23,15 @@ block content
                 .input-group-append
                     span#togglePassword(class="input-group-text") 
                       i(class="fa fa-eye")
-              p.mt-2.mx-3.err-msg(style="color: red") #{passwordError}
+              p.mt-2.mx-3.mb-3.err-msg(style="color: red") #{passwordError}
 
-            .form-group.row.my-5
+            .form-group.row.mt-sm-4.mt-3
               .col-12.text-center
                 button.btn.custom-btn.col-12(type="submit") LOGIN
 
-            .form-group.row.mb-3
+            .form-group.row.mb-1
               .col-12.text-center
                 p Don't have an account? 
                   a(href='/registration') Register
 
-      .col-3
+      .col-sm-3

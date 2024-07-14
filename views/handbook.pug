@@ -1,19 +1,19 @@
 extends layout
 
 block content
-    .box.p-5
+    .box.p-sm-5.p-4
         .row
             h1.col-12.display-flex.text-center= title
 
-        .row.mt-5
+        .row.mt-sm-5.mt-4
             h2.col-12 Gameplay
             p.col-12 Roll the dice and move the piece left or right based on the number rolled. For example, moving the piece three spaces if the player rolls a 3.
 
-        .row.mt-5
+        .row.mt-sm-5.mt-4
             h2.col-12 Snake 
             p.col-12 If the player lands on the snake’s head, the player needs to scan the QR code and answer a question. 
             
-            .col-12.mx-4
+            .col-12.mx-sm-4
                 .d-flex
                     .d-flex
                         img(src="/images/snake.png", width="20px", height="20px")
@@ -22,7 +22,7 @@ block content
                         |  answer, 
                         b stay on the snake’s head.
 
-            .col-12.mx-4
+            .col-12.mx-sm-4
                 .d-flex
                     .d-flex
                         img(src="/images/snake.png", width="20px", height="20px")
@@ -32,11 +32,11 @@ block content
                         b slide down on the snake’s tail.
 
 
-        .row.mt-5
+        .row.mt-sm-5.mt-4
             h2.col-12 Ladder 
             p.col-12 If the player lands at the bottom of a ladder, the player needs to scan the QR code and answer a question. 
             
-            .col-12.mx-4 
+            .col-12.mx-sm-4
                 .d-flex
                     .d-flex 
                         img(src="/images/ladder.png", width="20px", height="20px")
@@ -45,7 +45,7 @@ block content
                         | answer, 
                         b climb to the top of the leader.
             
-            .col-12.mx-4 
+            .col-12.mx-sm-4 
                 .d-flex
                     .d-flex 
                         img(src="/images/ladder.png", width="20px", height="20px")
@@ -54,7 +54,7 @@ block content
                         | answer, 
                         b stay at the bottom.
 
-        .row.mt-5
+        .row.mt-sm-5.mt-4
             h2.col-12 To Win the Game 
             p.col-12 The 
                 b first player 
@@ -65,7 +65,7 @@ block content
                 | needed to land on the 
                 b final space.
 
-        .row.mt-5
+        .row.mt-sm-5.mt-4
             h2.col-12 Bounce Back 
             p.col-12 If the player 
                 b exceeds the space 
@@ -73,6 +73,6 @@ block content
                 b bounce back. 
                 | For example, if the player needed 3 spaces to reach the top but rolled a 6, move to the final space, then backtrack 3 spaces.
 
-        .row.display-flex.justify-content-end
-            a.btn.custom-btn.px-5.mx-5.mt-4(href = '/') CLOSE
+        .row.display-flex.justify-content-sm-end.justify-content-center
+            a.btn.custom-btn.px-5.mx-sm-5.mt-4(href = '/') CLOSE
             

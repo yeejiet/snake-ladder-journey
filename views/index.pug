@@ -1,18 +1,44 @@
 extends layout
 
 block content
-  .row.mx-2
+  .row.mx-2.d-flex.d-none.d-xl.block
     h1.col-11= title
     a.col-1(href="/handbook")
-      img(src="/images/handbook.png", alt="User Manual", width="75px")
+      img.handbook-img(src="/images/handbook.png", alt="User Manual")
 
-  .row.m-4
-    .col-3.text-center.p-4
-      h2.justify-content-start Username
-      h4 Score: 
-      p users.score
-      a.btn.custom-btn.col-12(href="/logout") LOGOUT
+  .row.d-sm-none 
+    h1.col-12.text-center= title 
+
+  .row.pt-3.d-sm-none
+    a.col.d-flex.justify-content-end(href="/handbook")
+      img.handbook-img(src="/images/handbook.png", alt="User Manual")
+    .col.d-flex.justify-content-start
+      img.handbook-img(src="/images/qrScanner.png", alt="QR Code Scanner")
+    
+
+  .row.m-sm-4
+    .col-sm-3.text-center.p-4
       
-    .col-9.box.p-4
+      .row 
+        .col
+          h2.justify-content-start Username
+
+      .row 
+        .col 
+          h4 Score: 
+          p users.score
+
+      .row 
+        .col.d-flex.justify-content-center.my-sm-5.d-none.d-xl-block
+          img.handbook-img(src="/images/qrScanner.png", alt="QR Code Scanner")
+
+      .row.d-flex.d-none.d-xl-block.text-center
+        a.btn.custom-btn.col-11(href="/logout") LOGOUT
+      
+    .col-sm-9.box.p-4
         include questions
+
+  .row
+    .col-12.mt-4.d-flex.justify-content-center
+      a.btn.custom-btn.d-sm-none(href="/logout") LOGOUT
         

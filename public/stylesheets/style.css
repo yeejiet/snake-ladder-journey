@@ -56,3 +56,38 @@ a:hover {
   font-size: 15px;
   font-style: italic;
 }
+
+.handbook-img {
+  width: 75px;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 17px;
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  .handbook-img {
+    width: 55px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1080px) {
+  body {
+    font-size: 17px;
+  }
+
+  h1 {
+    font-size: 45px;
+  }
+}
