@@ -8,3 +8,15 @@ block content
         
         .row.mx-sm-2.mb-2.d-flex.justify-content-sm-end.justify-content-center
           button.btn.custom-btn(type="submit") Submit Answers
+
+    // Modal for displaying result
+    .modal.fade#result-modal(tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            h5.modal-title#resultModalLabel Result
+            button.close(type="button" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") &times;
+          .modal-body
+            img#result-gif.d-flex.justify-content-center(src="" alt="Result GIF" class="img-fluid")
+            p#result-message.text-center

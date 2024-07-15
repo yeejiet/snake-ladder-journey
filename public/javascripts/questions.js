@@ -49,7 +49,38 @@ $(document).ready(function() {
     $('#questions-form').on('submit', function(event) {
         event.preventDefault();
         var formData = $(this).serializeArray();
-        console.log(formData);
-        // You can now send formData to the server for validation and scoring
+        console.log('Form data:', formData);
+        
+        var answers = [];
+        formData.forEach(function(item) {
+            const questionId = item.name.replace('question', '');
+            answers.push({ questionId: questionId, answer: item.value });
+        });
+
+        console.log('Answers to submit:', answers);
+
+        $.ajax({
+            url: '/submitAnswers',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(answers),
+            success: function(response) {
+                console.log('Response from server:', response);
+
+                var results = response.results;
+                if (results.length > 0) {
+                    var gifSrc = results[0].isCorrect ? '/images/happy.gif' : '/images/sad.gif';
+                    var message = results[0].isCorrect ? "Congratulation! You get the correct answer" : "Oppsy! Try again next time!";
+                    
+                    // Display the message and GIF in a modal
+                    $('#result-message').text(message);
+                    $('#result-gif').attr('src', gifSrc);
+                    $('#result-modal').modal('show');
+                }
+            },
+            error: function(err) {
+                console.error('Error submitting answers:', err);
+            }
+        });
     });
 });
