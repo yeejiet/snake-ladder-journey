@@ -1,3 +1,4 @@
+// login.js
 const express = require('express');
 const router = express.Router();
 
@@ -22,8 +23,8 @@ module.exports = (db) => {
                     req.session.email = email;
                     req.session.id = results[0].id;
                     req.session.username = results[0].username;
+                    req.session.score = results[0].score; // Store the score in session
                     res.redirect('/');
-                   
                 } else {
                     req.session.emailError = 'Incorrect Email and Password!';
                     res.redirect('/login');

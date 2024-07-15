@@ -1,3 +1,4 @@
+// routes/index.js
 var express = require('express');
 var router = express.Router();
 
@@ -14,17 +15,13 @@ module.exports = (db, checkLoggedIn) => {
         return res.status(500).send('Internal Server Error');
       }
 
-      // // Log the result to debug
-      // console.log('Query result:', result);
-
-      // // Ensure result is an array
-      // if (!Array.isArray(result)) {
-      //   console.error('Query result is not an array:', result);
-      //   return res.status(500).send('Internal Server Error');
-      // }
-
-      // Render the 'index' view with the query results
-      res.render('index', { title: 'Snake and Ladder Journey', users: result });
+      // Render the 'index' view with the query results and session data
+      res.render('index', { 
+        title: 'Snake and Ladder Journey', 
+        users: result, 
+        username: req.session.username, 
+        score: req.session.score 
+      });
     });
   });
 
