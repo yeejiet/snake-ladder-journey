@@ -1,7 +1,6 @@
-// routes/login.js
+// login.js
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
 
 module.exports = (db) => {
     router.get('/login', (req, res) => {
@@ -11,37 +10,27 @@ module.exports = (db) => {
         req.session.emailError = null; // Clear the error message
         req.session.passwordError = null; // Clear the error message
         req.session.email = null; // Clear the email
-        res.render('login', { emailError, passwordError, email, title: 'LOGIN' });
+        res.render('login', { emailError, passwordError, email, title:'LOGIN' });
     });
 
     router.post('/login', (req, res) => {
         const { email, password } = req.body;
-        req.session.email = email; 
+        req.session.email = email; // Store the email in session
         if (email && password) {
-            db.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
+            db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
                 if (results.length > 0) {
-                    bcrypt.compare(password, results[0].password, (err, result) => {
-                        if (result) {
-                            req.session.loggedin = true;
-                            req.session.email = email;
-                            req.session.id = results[0].id;
-                            req.session.username = results[0].username;
-                            req.session.score = results[0].score; // Store the score in session
-                            res.redirect('/');
-                        } else {
-                            // Incorrect password
-                            req.session.passwordError = 'Incorrect Password!';
-                            res.redirect('/login');
-                        }
-                    });
+                    req.session.loggedin = true;
+                    req.session.email = email;
+                    req.session.id = results[0].id;
+                    req.session.username = results[0].username;
+                    req.session.score = results[0].score; // Store the score in session
+                    res.redirect('/');
                 } else {
-                    // No user found with given email
-                    req.session.emailError = 'Incorrect Email!';
+                    req.session.emailError = 'Incorrect Email and Password!';
                     res.redirect('/login');
                 }
             });
         } else {
-            // Email or password not provided
             req.session.emailError = 'Please enter Email!';
             req.session.passwordError = 'Please enter Password!';
             res.redirect('/login');
