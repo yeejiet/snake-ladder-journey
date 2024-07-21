@@ -20,10 +20,15 @@ module.exports = (db) => {
             db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
                 if (results.length > 0) {
                     req.session.loggedin = true;
+                    req.session.userId = results[0].id; // Ensure userId is stored in session
                     req.session.email = email;
-                    req.session.id = results[0].id;
                     req.session.username = results[0].username;
                     req.session.score = results[0].score; // Store the score in session
+                    
+                    // Log the user ID and session user ID
+                    console.log('User logged in with ID:', results[0].id);
+                    console.log('Session userId:', req.session.userId);
+    
                     res.redirect('/');
                 } else {
                     req.session.emailError = 'Incorrect Email and Password!';
@@ -36,6 +41,7 @@ module.exports = (db) => {
             res.redirect('/login');
         }
     });
+    
 
     router.get('/logout', (req, res) => {
         if (req.session) {

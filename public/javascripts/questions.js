@@ -1,3 +1,4 @@
+// javascripts/questions.js
 $(document).ready(function() {
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -68,14 +69,19 @@ $(document).ready(function() {
                 console.log('Response from server:', response);
 
                 var results = response.results;
+                var updatedScore = response.updatedScore;
+
                 if (results.length > 0) {
                     var gifSrc = results[0].isCorrect ? '/images/happy.gif' : '/images/sad.gif';
-                    var message = results[0].isCorrect ? "Congratulation! You get the correct answer" : "Oppsy! Try again next time!";
+                    var message = results[0].isCorrect ? "Congratulations! You got the correct answer" : "Oops! Try again next time!";
                     
                     // Display the message and GIF in a modal
                     $('#result-message').text(message);
                     $('#result-gif').attr('src', gifSrc);
                     $('#result-modal').modal('show');
+
+                    // Update the score on the page
+                    $('#user-score').text(updatedScore); // Ensure there's an element with id 'user-score' on your page
                 }
             },
             error: function(err) {
@@ -84,3 +90,5 @@ $(document).ready(function() {
         });
     });
 });
+
+
