@@ -79,9 +79,6 @@ module.exports = function(db) {
                 res.status(500).json({ error: 'Failed to process answers' });
             });
     });
-    
-    
-    
 
     return router;
 };

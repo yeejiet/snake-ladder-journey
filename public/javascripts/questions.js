@@ -47,7 +47,8 @@ $(document).ready(function() {
         }
     });
 
-    $('#questions-form').on('submit', function(event) {
+    // Clear previous event handlers to prevent duplication
+    $('#questions-form').off('submit').on('submit', function(event) {
         event.preventDefault();
         var formData = $(this).serializeArray();
         console.log('Form data:', formData);
@@ -59,6 +60,9 @@ $(document).ready(function() {
         });
 
         console.log('Answers to submit:', answers);
+
+        // Disable the submit button to prevent multiple submissions
+        $('#questions-form button[type="submit"]').prop('disabled', true);
 
         $.ajax({
             url: '/submitAnswers',
@@ -86,9 +90,14 @@ $(document).ready(function() {
             },
             error: function(err) {
                 console.error('Error submitting answers:', err);
+            },
+            complete: function() {
+                // Re-enable the submit button
+                $('#questions-form button[type="submit"]').prop('disabled', false);
             }
         });
     });
 });
+
 
 
