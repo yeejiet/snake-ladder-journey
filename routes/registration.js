@@ -7,6 +7,26 @@ module.exports = (db) => {
         res.render('registration', { title: 'REGISTRATION' });
     });
 
+    // Check username availability
+    router.post('/checkUsername', (req, res) => {
+        const { username } = req.body;
+        const query = 'SELECT * FROM users WHERE username = ?';
+        db.query(query, [username], (err, results) => {
+            if (err) throw err;
+            res.json({ exists: results.length > 0 });
+        });
+    });
+
+    // Check email availability
+    router.post('/checkEmail', (req, res) => {
+        const { email } = req.body;
+        const query = 'SELECT * FROM users WHERE email = ?';
+        db.query(query, [email], (err, results) => {
+            if (err) throw err;
+            res.json({ exists: results.length > 0 });
+        });
+    });
+
     router.post('/register', (req, res) => {
         const { username, email, password } = req.body;
 
@@ -36,7 +56,7 @@ module.exports = (db) => {
             const insertUserQuery = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
             db.query(insertUserQuery, [username, email, password], (err, results) => {
                 if (err) throw err;
-                res.redirect('/handbook');
+                res.redirect('/');
             });
         });
     });

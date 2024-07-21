@@ -29,7 +29,7 @@ module.exports = (db) => {
                     console.log('User logged in with ID:', results[0].id);
                     console.log('Session userId:', req.session.userId);
     
-                    res.redirect('/');
+                    res.redirect('/handbook');
                 } else {
                     req.session.emailError = 'Incorrect Email and Password!';
                     res.redirect('/login');
