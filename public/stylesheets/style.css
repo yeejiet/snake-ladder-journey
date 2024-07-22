@@ -21,6 +21,8 @@ h1 {
 a {
   color: #87afc7;
   font-weight: lighter;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 a:hover {
@@ -39,17 +41,28 @@ a:hover {
 
 .custom-btn {
   /* background-color: #65799b; */
-  background-color: #64868e;
-  border: 2px #64868e solid;
-  color: #d1e4d1;
-  font-weight: bold;
+  background-color: #64868e !important;
+  border: 2px #64868e solid !important;
+  color: #d1e4d1 !important;
+  font-weight: bold !important;
 }
 
 .custom-btn:hover {
-  background-color: #d1e4d1;
-  border: 2px #64868e solid;
-  color: #64868e;
+  background-color: #d1e4d1 !important;
+  border: 2px #64868e solid !important;
+  color: #64868e !important;
+  font-weight: bold !important;
+}
+
+button {
+  /* background-color: #65799b; */
+  background-color: #64868e; 
+  border: 2px #64868e solid !important;
+  color: #d1e4d1;
   font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 7px;
+  margin-bottom: 9px;
 }
 
 .err-msg {
@@ -59,6 +72,48 @@ a:hover {
 
 .handbook-img {
   width: 75px;
+}
+
+#reader {
+  width: 600px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -79,6 +134,14 @@ a:hover {
     width: 55px;
     display: flex;
     align-items: center;
+  }
+
+  button {
+    padding: 10px;
+  }
+  
+  button:hover {
+    padding: 10px;
   }
 }
 

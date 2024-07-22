@@ -93,6 +93,11 @@ app.get('/handbook', (req, res) => {
   res.render('handbook', { title: 'USER MANUAL BOOK' });
 });
 
+// Get qrscanner page
+app.get('/qrscanner', (req, res) => {
+  res.render('qrscanner', { title: 'QR SCANNER' });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

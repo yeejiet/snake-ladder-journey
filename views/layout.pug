@@ -15,16 +15,23 @@ html
     link(rel="stylesheet", href="/stylesheets/style.css")
     //- jQuery
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    //- qrscan
+    script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" 
+      integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer"
+    )
     
   body
     block content
 
     //- registration.js
     script(src='/javascripts/registration.js')
-    //- questions.js
-    script(src='/javascripts/questions.js')
     //- passwordVisibility.js
     script(src='/javascripts/passwordVisibility.js')
+    //- qrScanner.js
+    script(src='/javascripts/qrScanner.js')
     //- Bootstrap JS and dependencies
     script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
